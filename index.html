@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Consulte CEPs e CNPJs em um só lugar.">
+  <title>Busca CEP & CNPJ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">⌕</span><div><strong>Busca <span>CEP</span> & CNPJ</strong><small>Consultas rápidas em um só lugar</small></div></div>
+    <span class="local-tag">VERSÃO INICIAL</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">VALIDAÇÃO DE CADASTROS</p>
+      <h1>Encontre informações.<br><span>Evite consultas em vários sites.</span></h1>
+      <p class="hero-copy">Consulte um CEP, pesquise um CNPJ e compare endereços para identificar possíveis divergências cadastrais.</p>
+    </section>
+
+    <nav class="tabs" aria-label="Tipo de consulta">
+      <button class="tab active" data-panel="cep-panel">⌖ Consultar CEP</button>
+      <button class="tab" data-panel="cnpj-panel">▦ Consultar CNPJ</button>
+      <button class="tab" data-panel="compare-panel">⇄ Comparar CEPs</button>
+    </nav>
+
+    <section id="cep-panel" class="panel active">
+      <div class="panel-heading"><div class="icon">⌖</div><div><h2>Consulta de CEP</h2><p>Descubra o endereço associado a um CEP.</p></div></div>
+      <form id="cep-form" class="search-form">
+        <label for="cep-input">CEP</label>
+        <div class="input-row"><input id="cep-input" inputmode="numeric" autocomplete="postal-code" placeholder="Ex.: 01001-000" maxlength="9" required><button class="primary" type="submit">Consultar CEP <span>→</span></button></div>
+        <small class="hint">Digite os 8 números do CEP, com ou sem hífen.</small>
+      </form>
+      <div id="cep-result" class="result-area" aria-live="polite"></div>
+    </section>
+
+    <section id="cnpj-panel" class="panel">
+      <div class="panel-heading"><div class="icon">▦</div><div><h2>Consulta de CNPJ</h2><p>Consulte dados empresariais disponibilizados pela API.</p></div></div>
+      <form id="cnpj-form" class="search-form">
+        <label for="cnpj-input">CNPJ</label>
+        <div class="input-row"><input id="cnpj-input" inputmode="numeric" autocomplete="off" placeholder="Ex.: 00.000.000/0001-00" maxlength="18" required><button class="primary" type="submit">Consultar CNPJ <span>→</span></button></div>
+        <small class="hint">A consulta usa a BrasilAPI. O serviço pode estar indisponível ou ter dados desatualizados.</small>
+      </form>
+      <div id="cnpj-result" class="result-area" aria-live="polite"></div>
+    </section>
+
+    <section id="compare-panel" class="panel">
+      <div class="panel-heading"><div class="icon">⇄</div><div><h2>Comparar CEPs</h2><p>Compare o CEP cadastrado com o CEP encontrado na consulta.</p></div></div>
+      <form id="compare-form" class="search-form">
+        <div class="two-cols">
+          <div><label for="cep-old">CEP cadastrado</label><input id="cep-old" inputmode="numeric" placeholder="Ex.: 01001-000" maxlength="9" required></div>
+          <div><label for="cep-new">CEP encontrado</label><input id="cep-new" inputmode="numeric" placeholder="Ex.: 01310-100" maxlength="9" required></div>
+        </div>
+        <button class="primary compare-button" type="submit">Comparar endereços <span>→</span></button>
+      </form>
+      <div id="compare-result" class="result-area" aria-live="polite"></div>
+    </section>
+
+    <section class="notice">
+      <strong>Importante sobre os resultados</strong>
+      <p>“Não encontrado” significa que a fonte consultada não retornou o CEP/CNPJ; não é uma confirmação absoluta de inexistência. A comparação indica divergência entre os dados informados, mas não prova sozinha que a empresa mudou de endereço. Confirme divergências em uma fonte oficial.</p>
+    </section>
+  </main>
+
+  <footer><span>Busca CEP & CNPJ</span><span>Ferramenta de consulta • Dados fornecidos por serviços externos</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
